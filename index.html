@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>Unit Converter</title>
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">         
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bootstrap-social-gh-pages\bootstrap-social-gh-pages\bootstrap-social.css">
+        <link rel="stylesheet" href="styles.css">
+    </header>
+    <body style="background-color: rgb(21, 36, 22);">
+        <div class="container">
+            <div class="row" id="heading">
+                <div class="col-12 col-md-8 offset-md-2 text-center">
+                    <h1>Unit Converter</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center" id="input">
+                <div class="col-5 col-md-1 ml-md-auto">
+                    <label for="from"><strong>From</strong></label>
+                </div>
+                <div class="col-7 col-md-1 ml-md-auto">
+                    <select id="type1" name="type1">
+                        <option value="0">m</option>
+                        <option value="1">km</option>
+                        <option value="2">cm</option>
+                        <option value="3">inch</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4 mr-md-auto">
+                    <input type="number" id="from" name="from">
+                </div>
+            </div>
+            <div class="row justify-content-center" id="output">
+                <div class="col-5 col-md-1 ml-md-auto">
+                    <label for="to"><strong>To</strong></label>
+                </div>
+                <div class="col-7 col-md-1 ml-md-auto">
+                    <select id="type2" name="type2">
+                        <option value="0">m</option>
+                        <option value="1">km</option>
+                        <option value="2">cm</option>
+                        <option value="3">inch</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4 mr-md-auto">
+                    <strong><span id="to"></span></strong>
+                </div>
+            </div>
+            <div class="row justify-content-center" id="convert">
+                <div class="col-auto">
+                    <button class="btn btn-success btn-lg" onclick="conversion()">Convert</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function conversion(){
+                let inputValue = document.getElementById('from').value;
+                let ftype = document.getElementById('type1').value;
+                let ttype = document.getElementById('type2').value;
+                let result = document.getElementById('to');
+                let value = 0;
+                switch(ftype)
+                {
+                    case '0':value = inputValue;
+                    break;
+                    case '1':value = inputValue*1000;
+                    break;
+                    case '2':value = inputValue/100;
+                    break;
+                    case '3':value = inputValue*0.0254;
+                    break;
+                }
+                switch(ttype)
+                {
+                    case '0':value = value;
+                    break;
+                    case '1':value = value/1000;
+                    break;
+                    case '2':value = value*100;
+                    break;
+                    case '3':value = value*39.3701;
+                    break;
+                }
+                result.innerHTML = value;
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
